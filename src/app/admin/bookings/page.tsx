@@ -124,7 +124,7 @@ export default async function AdminBookingsPage() {
 
 function MarkScheduledButton({ bookingId }: { bookingId: string }) {
   const markScheduled = async () => {
-    const supabase = createClient()
+    const supabase = await createClient()
     await supabase
       .from('bookings')
       .update({ status: 'scheduled' })
