@@ -1,4 +1,4 @@
-import { createClient } from '@/lib/supabase/server'
+import { createSupabaseClient } from '@/lib/supabase/server'
 import { relativeTime, cleanPhone } from '@/lib/utils'
 
 export const dynamic = 'force-dynamic'
@@ -124,7 +124,7 @@ export default async function AdminBookingsPage() {
 
 function MarkScheduledButton({ bookingId }: { bookingId: string }) {
   const markScheduled = async () => {
-    const supabase = await createClient()
+    const supabase = await createSupabaseClient()
     await supabase
       .from('bookings')
       .update({ status: 'scheduled' })
